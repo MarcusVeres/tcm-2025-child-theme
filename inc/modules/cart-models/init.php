@@ -186,13 +186,14 @@ function tcm_child_cart_models_inline_css() {
 
     ?>
     <style>
-        .wc-block-product-template__responsive,
-        .wc-block-product-template,
-        .wp-block-woocommerce-product-template,
-        .wc-block-product-results-count,
-        .wp-block-woocommerce-product-results-count,
-        .wc-block-catalog-sorting,
-        .wp-block-woocommerce-catalog-sorting {
+        /* Scope WooCommerce element hiding to ONLY cart-models pages */
+        .tax-product_cat.term-cart-models .wc-block-product-template__responsive,
+        .tax-product_cat.term-cart-models .wc-block-product-template,
+        .tax-product_cat.term-cart-models .wp-block-woocommerce-product-template,
+        .tax-product_cat.term-cart-models .wc-block-product-results-count,
+        .tax-product_cat.term-cart-models .wp-block-woocommerce-product-results-count,
+        .tax-product_cat.term-cart-models .wc-block-catalog-sorting,
+        .tax-product_cat.term-cart-models .wp-block-woocommerce-catalog-sorting {
             display: none !important;
         }
 
@@ -202,7 +203,6 @@ function tcm_child_cart_models_inline_css() {
             gap: 20px;
             margin: 30px 0;
             width: auto !important;
-            padding: 5% 5% 20% 5%;
             margin-left: 0 !important;
             margin-right: 0 !important;
             max-width: none !important;
