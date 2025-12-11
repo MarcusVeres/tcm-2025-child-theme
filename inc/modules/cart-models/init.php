@@ -49,7 +49,7 @@ function tcm_child_display_custom_cart_models() {
     // Get subcategories (B2BKing will handle visibility automatically)
     $subcategories = get_terms(array(
         'taxonomy' => 'product_cat',
-        'hide_empty' => true,
+        'hide_empty' => false,  // Show empty categories too
         'parent' => $term->term_id,
         'meta_key' => 'category_order',
         'orderby' => 'meta_value_num',
@@ -121,7 +121,7 @@ function tcm_child_cart_models_shortcode($atts) {
     // Query arguments
     $args = array(
         'taxonomy' => 'product_cat',
-        'hide_empty' => true,
+        'hide_empty' => false,
         'parent' => $parent_term->term_id,
         'number' => $atts['limit'],
         'offset' => ($paged - 1) * $atts['limit'],
@@ -132,6 +132,34 @@ function tcm_child_cart_models_shortcode($atts) {
 
     // Get subcategories (B2BKing handles visibility)
     $subcategories = get_terms($args);
+
+    // Check if cart models category is empty
+    if (empty($subcategories)) {
+        // Show helpful error message for admins
+        if (current_user_can('manage_options')) {
+            return '<div class="cart-models-error" style="border: 2px solid #f0ad4e; padding: 20px; margin: 20px 0; background: #fff;">'
+                . '<h3 style="color: #f0ad4e; margin-top: 0;">⚠️ No Cart Models Found</h3>'
+                . '<p><strong>The "Cart Models" category has no subcategories or products visible to your current user group.</strong></p>'
+                . '<p>This could mean:</p>'
+                . '<ul>'
+                . '<li>No cart model subcategories have been created yet</li>'
+                . '<li>The subcategories exist but are hidden from your customer group in B2BKing</li>'
+                . '<li>The subcategories exist but have no products assigned</li>'
+                . '</ul>'
+                . '<p>To fix this:</p>'
+                . '<ol>'
+                . '<li>Go to <strong>Products → Categories</strong></li>'
+                . '<li>Create subcategories under <strong>"Cart Models"</strong> (e.g., "Canadian Tire Carts", "Costco Carts")</li>'
+                . '<li>For each subcategory, set <strong>B2BKing Visibility</strong> to show it to the appropriate customer groups</li>'
+                . '<li>Assign products to these subcategories</li>'
+                . '<li>Save changes</li>'
+                . '</ol>'
+                . '<p><em>Note: Only administrators can see this message. Regular users see nothing.</em></p>'
+                . '</div>';
+        }
+        // Non-admins see nothing (fail silently)
+        return '';
+    }
 
     // Count total for pagination
     $total_terms = wp_count_terms('product_cat', array('parent' => $parent_term->term_id));
