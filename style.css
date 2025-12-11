@@ -1,0 +1,194 @@
+/*
+Theme Name: TCM 2025 Child
+Theme URI: https://tcmlimited.com
+Description: Twenty Twenty-Five child theme for TCM with vendor-specific styling and WooCommerce customizations
+Author: Marcus & Claude
+Author URI: https://tcmlimited.com
+Template: twentytwentyfive
+Version: 1.0.0
+Text Domain: tcm-2025-child
+Domain Path: /languages
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+This theme, like WordPress, is licensed under the GPL.
+*/
+
+/*
+=================================================
+TCM 2025 CHILD THEME - BASE STYLES
+=================================================
+*/
+
+/* DEFAULT BRANDING */
+.branded-bg > span {
+  background: #0D3692 !important;
+}
+
+.hero-logo {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 90px;
+  max-width: 360px;
+  width: auto;
+  margin: auto;
+  background-image: url("http://shop.tcmlimited.com/wp-content/uploads/2025/03/tcm-square-logo.png");
+}
+
+/*
+=================================================
+ROLE-BASED STYLES
+=================================================
+*/
+
+/* ADMINISTRATOR */
+.tcm-administrator .hero-logo {
+  background-image: url("http://shop.tcmlimited.com/wp-content/uploads/2025/03/tcm-square-logo.png");
+}
+
+.tcm-administrator .branded-bg,
+.tcm-administrator .branded-bg > span {
+  background: #2A8EBF !important;
+  color: white !important;
+}
+
+.tcm-administrator a.wp-element-button {
+  background: #0BA04C !important;
+  color: white !important;
+}
+
+/*
+=================================================
+VENDOR-SPECIFIC STYLES
+=================================================
+*/
+
+/* STANDARD PRICING */
+.tcm-vendor-standard-pricing .hero-logo {
+  background-image: url("http://shop.tcmlimited.com/wp-content/uploads/2025/03/tcm-square-logo.png");
+}
+
+.tcm-vendor-standard-pricing .branded-bg,
+.tcm-vendor-standard-pricing .branded-bg > span {
+  background: #0D3692 !important;
+  color: white !important;
+}
+
+.tcm-vendor-standard-pricing button.wp-element-button,
+.tcm-vendor-standard-pricing a.wp-element-button {
+  background: #2A8EBF !important;
+  color: white !important;
+}
+
+/* CANADIAN TIRE */
+.tcm-vendor-canadian-tire .hero-logo {
+  background-image: url("http://shop.tcmlimited.com/wp-content/uploads/2025/04/e4f3dc6b134edf591489edcaf9c9209c.png");
+}
+
+.tcm-vendor-canadian-tire .branded-bg,
+.tcm-vendor-canadian-tire .branded-bg > span {
+  background: #262626 !important;
+  color: white !important;
+}
+
+.tcm-vendor-canadian-tire button.wp-element-button,
+.tcm-vendor-canadian-tire a.wp-element-button {
+  background: #F4D52D !important;
+  color: #262626 !important;
+}
+
+/* COSTCO */
+.tcm-vendor-costco .hero-logo {
+  background-image: url("http://shop.tcmlimited.com/wp-content/uploads/2025/04/costco.png");
+}
+
+.tcm-vendor-costco .branded-bg,
+.tcm-vendor-costco .branded-bg > span {
+  background: #005DAB !important;
+  color: white !important;
+}
+
+.tcm-vendor-costco button.wp-element-button,
+.tcm-vendor-costco a.wp-element-button {
+  background: #E31936 !important;
+  color: white !important;
+}
+
+/* LOBLAWS */
+.tcm-vendor-loblaws .hero-logo {
+  background-image: url("http://shop.tcmlimited.com/wp-content/uploads/2025/04/loblaws.png");
+}
+
+.tcm-vendor-loblaws .branded-bg,
+.tcm-vendor-loblaws .branded-bg > span {
+  background: #191919 !important;
+  color: white !important;
+}
+
+.tcm-vendor-loblaws button.wp-element-button,
+.tcm-vendor-loblaws a.wp-element-button {
+  background: #DC2626 !important;
+  color: white !important;
+}
+
+/*
+=================================================
+UTILITIES
+=================================================
+*/
+
+@media screen and (max-width: 540px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .hide-on-narrow {
+    display: none !important;
+  }
+}
+
+/*
+=================================================
+WOOCOMMERCE FIXES
+=================================================
+*/
+
+.woocommerce-Address-title.title {
+  text-align: left;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.wp-block-woocommerce-checkout.wc-block-checkout {
+  padding-bottom: 8%;
+}
+
+/*
+=================================================
+PRODUCT ALIGNMENT
+=================================================
+*/
+
+ul.wc-block-product-template.wp-block-woocommerce-product-template li.wc-block-product.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+
+/*
+=================================================
+HIDE "FREE" SHIPPING LABEL
+Note: Remove this when no longer needed
+=================================================
+*/
+
+#radio-control-0-flat_rate\:3__description .wc-block-components-shipping-rates-control__package__description--free,
+.wc-block-components-totals-shipping .wc-block-components-totals-item .wc-block-components-totals-item__value strong,
+#radio-control-0-flat_rate\:3__secondary-label {
+  display: none;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "tcm-2025-child-theme",
+  "version": "1.0.0",
+  "description": "Build scripts for TCM 2025 Child Theme",
+  "scripts": {
+    "build": "node build.js",
+    "build:patch": "node build.js patch",
+    "build:minor": "node build.js minor",
+    "build:major": "node build.js major"
+  },
+  "devDependencies": {
+    "archiver": "^6.0.1"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MarcusVeres/tcm-wp-themes.git"
+  },
+  "author": "Marcus & Claude",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "child-theme",
+    "twentytwentyfive",
+    "woocommerce",
+    "b2bking",
+    "vendor"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
