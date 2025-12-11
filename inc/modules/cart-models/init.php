@@ -249,12 +249,15 @@ function tcm_child_cart_models_inline_css() {
 
         .cart-models-grid {
             display: grid;
-            grid-template-columns: repeat(var(--columns, 3), 1fr);
+            grid-template-columns: repeat(var(--columns, 4), 1fr);
             gap: 20px;
-            margin: 30px 0;
+            margin: 0 0 30px 0;
             width: auto !important;
             padding: 20px;
-            max-width: none !important;
+            max-width: 1340px !important;
+        }
+        .cart-models-grid .wc-block-components-notices {
+            display: none; /* not sure why this even exists INSIDE the grid... it's empty. Really dumb. */
         }
 
         .cart-models-grid.columns-2 { --columns: 2; }
@@ -278,6 +281,7 @@ function tcm_child_cart_models_inline_css() {
             display: flex;
             flex-direction: column;
             height: 100%;
+            justify-content: space-between;
         }
 
         .cart-model-card .cart-img-wrapper {

@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define constants
-define('TCM_CHILD_VERSION', '1.0.10');
+define('TCM_CHILD_VERSION', '1.0.11');
 define('TCM_CHILD_DIR', get_stylesheet_directory());
 define('TCM_CHILD_URL', get_stylesheet_directory_uri());
 
