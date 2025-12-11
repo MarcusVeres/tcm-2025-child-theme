@@ -12,6 +12,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// Removed - B2BKing handles visibility natively
+
 /**
  * Override cart models category page
  */
@@ -44,7 +46,7 @@ function tcm_child_display_custom_cart_models() {
         return;
     }
 
-    // Get subcategories
+    // Get subcategories (B2BKing will handle visibility automatically)
     $subcategories = get_terms(array(
         'taxonomy' => 'product_cat',
         'hide_empty' => true,
@@ -92,7 +94,27 @@ function tcm_child_cart_models_shortcode($atts) {
 
     // Get cart-models category
     $parent_term = get_term_by('slug', 'cart-models', 'product_cat');
+
     if (!$parent_term) {
+        // Parent category not visible to current user or doesn't exist
+        // Show helpful error message for admins
+        if (current_user_can('manage_options')) {
+            return '<div class="cart-models-error" style="border: 2px solid #dc3232; padding: 20px; margin: 20px 0; background: #fff;">'
+                . '<h3 style="color: #dc3232; margin-top: 0;">⚠️ Cart Models Configuration Error</h3>'
+                . '<p><strong>The "Cart Models" parent category is not visible to your current user group.</strong></p>'
+                . '<p>If the parent category is not visible, no child categories (e.g. Cart Models) will be visible.</p>'
+                . '<p>To fix this:</p>'
+                . '<ol>'
+                . '<li>Go to <strong>Products → Categories</strong></li>'
+                . '<li>Find the <strong>"Cart Models"</strong> category</li>'
+                . '<li>Edit it and scroll to <strong>"B2BKing Visibility"</strong></li>'
+                . '<li>Check the boxes for <strong>ALL customer groups</strong> to make it visible to everyone</li>'
+                . '<li>Save changes</li>'
+                . '</ol>'
+                . '<p><em>Note: Only administrators can see this message. Regular users see nothing.</em></p>'
+                . '</div>';
+        }
+        // Non-admins see nothing (fail silently)
         return '';
     }
 
@@ -108,7 +130,7 @@ function tcm_child_cart_models_shortcode($atts) {
         'order' => 'ASC'
     );
 
-    // Get subcategories
+    // Get subcategories (B2BKing handles visibility)
     $subcategories = get_terms($args);
 
     // Count total for pagination
