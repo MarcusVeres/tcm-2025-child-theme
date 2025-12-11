@@ -203,8 +203,7 @@ function tcm_child_cart_models_inline_css() {
             gap: 20px;
             margin: 30px 0;
             width: auto !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
+            padding: 20px;
             max-width: none !important;
         }
 
