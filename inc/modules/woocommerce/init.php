@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
  */
 function tcm_child_customize_account_menu($items) {
     // Remove unwanted tabs
-    $remove_items = array('conversations', 'offers', 'subaccounts', 'downloads');
+    $remove_items = array('offers', 'subaccounts', 'downloads');
     foreach ($remove_items as $item) {
         if (isset($items[$item])) {
             unset($items[$item]);
